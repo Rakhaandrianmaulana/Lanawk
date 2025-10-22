@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LanaStore Mini File Hosting</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #1a1a1a;
+            margin-top: 0;
+        }
+        .upload-form {
+            border: 2px dashed #007bff;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            background-color: #fdfdff;
+            margin-bottom: 25px;
+        }
+        .upload-form input[type="file"] {
+            display: block;
+            margin: 15px auto;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            width: 90%;
+            cursor: pointer;
+        }
+        .upload-form input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .upload-form input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .nav-links {
+            text-align: center;
+        }
+        .nav-links a {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .nav-links a:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>LanaStore Mini File Hosting</h1>
+        <p style="text-align: center; margin-top: -10px; margin-bottom: 20px;">Upload file Anda (Maks: 200MB)</p>
+
+        <!-- 
+          Formulir Upload
+          - 'action' mengarah ke file PHP yang akan memproses upload
+          - 'enctype' wajib untuk upload file
+        -->
+        <div class="upload-form">
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <label for="fileToUpload">Pilih file untuk diupload:</label>
+                <!-- Batas ukuran sisi klien (hanya petunjuk, validasi utama di PHP) -->
+                <input type="hidden" name="MAX_FILE_SIZE" value="209715200" /> <!-- 200 * 1024 * 1024 -->
+                <input type="file" name="fileToUpload" id="fileToUpload" required>
+                <input type="submit" value="Upload File" name="submit">
+            </form>
+        </div>
+
+        <div class="nav-links">
+            <a href="list.php">Lihat Daftar File</a>
+        </div>
+    </div>
+
+</body>
+</html>
